@@ -7,7 +7,6 @@ const outputFile = path.join(__dirname, '../presets.json');
 
 let allPresets = [];
 
-// Klasördeki tüm JSON'ları okuyan yardımcı fonksiyon
 function loadPresetsFromDir(directory) {
     if (!fs.existsSync(directory)) return;
     const files = fs.readdirSync(directory);

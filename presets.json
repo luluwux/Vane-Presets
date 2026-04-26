@@ -1,0 +1,11 @@
+[
+  {
+    "id": "archey-official-1",
+    "name": "🔥 Archey Standard Bypass",
+    "description": "Optimized by Archey for general DPI blocks.",
+    "args": [
+      "--dpi-desync=fake",
+      "--dpi-desync-autottl"
+    ]
+  }
+]

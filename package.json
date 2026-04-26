@@ -1,0 +1,11 @@
+{
+  "name": "vane-presets",
+  "version": "1.0.0",
+  "description": "Vane DPI Presets repository",
+  "main": "scripts/build.js",
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
+  "author": "",
+  "license": "MIT"
+}
