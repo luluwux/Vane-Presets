@@ -94,7 +94,14 @@ Vane injects these automatically in most cases, but if you need surgical control
 * `tcp.DstPort==443 or udp.DstPort==443`: (Windows) Explicit WinDivert filter strings.
 * `--qnum=200`: (Linux) Binds the engine to Netfilter Queue 200.
 
+## 🌟 Support
 
-### Need Help?
-If you are unsure why your preset isn't working, use the `--debug` flag in your local Vane app and check the **Log Viewer** for real-time packet manipulation traces.
-```
+If you found this project helpful, please consider leaving a 🌟 star. Thank you!
+
+<p align="center"\>
+</p\>
+
+- [My Discord Profile](https://discord.com/users/852103749228036136)
+
+- If you find any errors, you can contact luppux
+<br> </br>
