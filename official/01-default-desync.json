@@ -1,0 +1,9 @@
+{
+  "id": "archey-official-1",
+  "name": "🔥 Archey Standart Bypass",
+  "description": "Genel DPI engellemeleri için Archey tarafından optimize edilmiştir.",
+  "args": [
+    "--dpi-desync=fake",
+    "--dpi-desync-autottl"
+  ]
+}

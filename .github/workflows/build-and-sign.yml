@@ -1,0 +1,52 @@
+name: "Build and Sign Presets"
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'official/**'
+      - 'community/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build presets.json (Merge JSONs)
+        run: node scripts/build.js
+
+      - name: Install Minisign
+        run: sudo apt-get update && sudo apt-get install -y minisign
+
+      - name: Sign presets.json
+        env:
+          MINISIGN_PRIVATE_KEY: ${{ secrets.MINISIGN_PRIVATE_KEY }}
+          MINISIGN_PASSWORD: ${{ secrets.MINISIGN_PASSWORD }}
+        run: |
+          # Private key'i gizlice dosyaya yaz
+          echo "$MINISIGN_PRIVATE_KEY" > minisign.key
+          
+          # Dosyayı şifre ile imzala
+          echo "$MINISIGN_PASSWORD" | minisign -S -s minisign.key -m presets.json
+          
+          # Güvenlik için key'i sil
+          rm minisign.key
+
+      - name: Commit and Push Results
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Vane Auto-Builder"
+          git add presets.json presets.json.minisig
+          git commit -m "🚀 Auto-build & sign new presets [skip ci]" || echo "No changes to commit"
+          git push
