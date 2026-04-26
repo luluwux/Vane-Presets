@@ -18,17 +18,17 @@ function loadPresetsFromDir(directory) {
                 const content = fs.readFileSync(path.join(directory, file), 'utf-8');
                 const preset = JSON.parse(content);
                 allPresets.push(preset);
-                console.log(`[+] Eklendi: ${preset.name} (${file})`);
+                console.log(`[+] Added: ${preset.name} (${file})`);
             } catch (err) {
-                console.error(`[!] Hata: ${file} ayrıştırılamadı. Geçersiz JSON!`, err);
+                console.error(`[!] Error: ${file} could not be parsed. Invalid JSON!`, err);
             }
         }
     });
 }
 
-console.log("🛠️ Vane Presets Derleniyor...");
+console.log("🛠️ Building Vane Presets...");
 loadPresetsFromDir(officialDir);
 loadPresetsFromDir(communityDir);
 
 fs.writeFileSync(outputFile, JSON.stringify(allPresets, null, 2));
-console.log(`\n✅ Başarılı! Toplam ${allPresets.length} preset presets.json içine yazıldı.`);
+console.log(`\n✅ Success! Total of ${allPresets.length} presets written to presets.json.`);
